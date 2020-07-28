@@ -25,7 +25,6 @@ private slots:
 
 private:
     Ui::build_Page *ui;
-    run_Page *runPage;
 };
 
 #endif // BUILD_PAGE_H

@@ -32,23 +32,32 @@ public:
     {
         if (select_Page->objectName().isEmpty())
             select_Page->setObjectName(QString::fromUtf8("select_Page"));
-        select_Page->resize(512, 751);
+        select_Page->resize(490, 751);
         selectBackBtn = new QPushButton(select_Page);
         selectBackBtn->setObjectName(QString::fromUtf8("selectBackBtn"));
-        selectBackBtn->setGeometry(QRect(59, 710, 91, 31));
+        selectBackBtn->setGeometry(QRect(70, 710, 91, 31));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(selectBackBtn->sizePolicy().hasHeightForWidth());
+        selectBackBtn->setSizePolicy(sizePolicy);
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font.setPointSize(10);
         selectBackBtn->setFont(font);
         line = new QFrame(select_Page);
         line->setObjectName(QString::fromUtf8("line"));
-        line->setGeometry(QRect(60, 30, 371, 20));
+        line->setGeometry(QRect(40, 50, 411, 20));
+        sizePolicy.setHeightForWidth(line->sizePolicy().hasHeightForWidth());
+        line->setSizePolicy(sizePolicy);
         line->setFont(font);
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
         selectOKBtn = new QPushButton(select_Page);
         selectOKBtn->setObjectName(QString::fromUtf8("selectOKBtn"));
-        selectOKBtn->setGeometry(QRect(340, 710, 91, 31));
+        selectOKBtn->setGeometry(QRect(330, 710, 91, 31));
+        sizePolicy.setHeightForWidth(selectOKBtn->sizePolicy().hasHeightForWidth());
+        selectOKBtn->setSizePolicy(sizePolicy);
         selectOKBtn->setFont(font);
         listWidget = new QListWidget(select_Page);
         QListWidgetItem *__qlistwidgetitem = new QListWidgetItem(listWidget);
@@ -56,12 +65,21 @@ public:
         QListWidgetItem *__qlistwidgetitem1 = new QListWidgetItem(listWidget);
         __qlistwidgetitem1->setCheckState(Qt::Checked);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
-        listWidget->setGeometry(QRect(70, 50, 351, 651));
+        listWidget->setGeometry(QRect(70, 70, 351, 631));
+        sizePolicy.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
+        listWidget->setSizePolicy(sizePolicy);
         listWidget->setFont(font);
         label = new QLabel(select_Page);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(220, 10, 61, 21));
-        label->setFont(font);
+        label->setGeometry(QRect(220, 0, 111, 31));
+        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font1.setPointSize(16);
+        font1.setBold(true);
+        font1.setWeight(75);
+        label->setFont(font1);
 
         retranslateUi(select_Page);
 

@@ -1,11 +1,14 @@
-#include "info_page.h"
-
-#include <QApplication>
+#include "main.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    info_Page w;
-    w.show();
-    return a.exec();
+    infoPage = new info_Page;
+
+    infoPage->show();
+
+    int ret = a.exec();
+    qDebug() << "App exec result: " << ret << endl;
+
+    delete infoPage;
 }

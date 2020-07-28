@@ -1,4 +1,4 @@
-#include "info_page.h"
+#include "main.h"
 #include "ui_info_page.h"
 
 info_Page::info_Page(QWidget *parent) :

@@ -2,7 +2,6 @@
 #define CFG_PAGE_H
 
 #include <QWidget>
-#include "conform_page.h"
 #include "select_page.h"
 
 namespace Ui {
@@ -26,12 +25,10 @@ private slots:
 
     void on_cfgAPICheck_clicked();
 
-    void cfg_Page::reshow();
-
 private:
     Ui::cfg_Page *ui;
-    conform_Page *cfmPage;
     select_Page *selectPage;
+
 };
 
 #endif // CFG_PAGE_H

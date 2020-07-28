@@ -23,10 +23,7 @@ private slots:
 
 private:
     Ui::conform_Page *ui;
-    build_Page *buildPage;
 
-signals:
-    void sindsignal();
 };
 
 #endif // CONFORM_PAGE_H

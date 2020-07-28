@@ -2,7 +2,6 @@
 #define INFO_PAGE_H
 
 #include <QWidget>
-#include "cfg_page.h"
 
 namespace Ui {
 class info_Page;
@@ -21,7 +20,6 @@ private slots:
 
 private:
     Ui::info_Page *ui;
-    cfg_Page *cfg;
 };
 
 #endif // INFO_PAGE_H

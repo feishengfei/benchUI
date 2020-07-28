@@ -1,4 +1,4 @@
-#include "conform_page.h"
+#include "main.h"
 #include "ui_conform_page.h"
 #include <QDebug>
 
@@ -24,8 +24,9 @@ void conform_Page::on_cfmPageBtn_clicked()
 
 void conform_Page::on_cfmBackBtn_clicked()
 {
-    qDebug() << "============ back to set run params" << endl;
-    emit sindsignal();
-    //this->parentWidget()->show();
     this->close();
+    qDebug() << "============ back to set run params" << endl;
+    cfg = new cfg_Page;
+    cfg->show();
+    //this->parentWidget()->show();
 }

@@ -1,4 +1,4 @@
-#include "cfg_page.h"
+#include "main.h"
 #include "ui_cfg_page.h"
 
 cfg_Page::cfg_Page(QWidget *parent) :
@@ -21,7 +21,6 @@ void cfg_Page::on_cfgExitBtn_clicked()
 void cfg_Page::on_cfgNextBtn_clicked()
 {
     cfmPage = new conform_Page;
-    //connect(cfmPage, SIGNAL(sendsignal()),this,SLOT(reshow()));
     cfmPage->show();
     this->hide();
 }
@@ -40,9 +39,4 @@ void cfg_Page::on_cfgAPICheck_clicked()
         selectPage = new select_Page;
         selectPage->show();
     }
-}
-
-void cfg_Page::reshow()
-{
-    this->show();
 }

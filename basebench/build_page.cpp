@@ -1,4 +1,4 @@
-#include "build_page.h"
+#include "main.h"
 #include "ui_build_page.h"
 #include <QFileDialog>
 #include <QDebug>
