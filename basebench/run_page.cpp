@@ -25,8 +25,8 @@ void run_Page::on_runFinishBtn_clicked()
 
 void run_Page::on_runFolderBtn_clicked()
 {
-    QDesktopServices::openUrl(QUrl("D:\\project\\test\\basebench\\result", QUrl::TolerantMode));
-   //QProcess::startDetached("explorer"+QString("D:\\project\\test\\basebench\\result"));
+   //QDesktopServices::openUrl(QUrl("D:\\project\\test\\basebench\\result", QUrl::TolerantMode));
+   QProcess::startDetached("explorer"+QString("D:\\project\\test\\basebench\\result"));
 }
 
 void run_Page::on_runSummaryBtn_clicked()

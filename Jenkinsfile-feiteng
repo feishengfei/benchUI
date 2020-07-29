@@ -1,0 +1,42 @@
+pipeline {
+    agent { label '192.168.30.55' }
+    triggers {
+        pollSCM('H/2 * * * *') 
+    }   
+
+    options {
+        disableConcurrentBuilds();
+    }
+    environment {
+        REMOTE_REPO_ADDR='192.168.30.55'
+        REMOTE_REPO_DIR='/home/botson/gb/CI'
+    }
+    stages {
+        stage('setup') {
+            steps {
+                echo 'copy and link umd to /home/botson/gb/umd/lib'
+                sh script: "pwd"
+                sh script: "export LD_LIBRARY_PATH=/home/botson/gb/umd/lib"
+            }
+        }
+        stage('build') {
+            steps {
+                sh script: "pwd"
+                sh script: "./build.sh"
+            }
+        }
+        stage('run') {
+            steps {
+                withEnv(['DISPLAY=:0', 'export LD_LIBRARY_PATH=/home/botson/gb/umd/lib']) {
+                    sh script: "export DISPLAY=:0"
+                    sh script: "./autorun.sh gb"
+                }
+            }
+        }
+        stage('compare') {
+            steps {
+                sh script: "./autocompare.sh feiteng"
+            }
+        }
+    }
+}

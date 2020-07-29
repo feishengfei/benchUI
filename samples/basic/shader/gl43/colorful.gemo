@@ -1,0 +1,32 @@
+#version 430 core
+#pragma STDGL invariant(all)
+layout(triangles) in;
+layout(triangle_strip, max_vertices=3) out;
+
+layout(location=0) uniform float time;
+layout(location=1) uniform mat4 mvp;
+
+in VS_OUT{
+    vec4 vv4colour;
+    }gs_in[];
+
+out GS_OUT{
+    vec4 gv4colour;
+}gs_out;
+
+
+void main(){
+    gl_Position = gl_in[0].gl_Position*mvp;
+    gs_out.gv4colour = vec4(gs_in[0].vv4colour.x * (sin(time) + 1.0) / 2,
+                             gs_in[0].vv4colour.x * (cos(time) + 1.0) / 2, 0.5, 1.0);;
+    EmitVertex();
+    gl_Position = gl_in[1].gl_Position*mvp;
+    gs_out.gv4colour = vec4(gs_in[1].vv4colour.x * (sin(time) + 1.0) / 2,
+                        gs_in[1].vv4colour.z * (sin(time) + 1.0) / 2, 0.5, 1.0);;
+    EmitVertex();
+    gl_Position = gl_in[2].gl_Position*mvp;
+    gs_out.gv4colour = vec4(gs_in[2].vv4colour.x * (cos(time) + 1.0) / 2,
+                        gs_in[2].vv4colour.z * (cos(time) + 1.0) / 2, 0.5, 1.0);;
+    EmitVertex();
+    EndPrimitive();
+}

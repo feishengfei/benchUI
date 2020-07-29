@@ -1,0 +1,15 @@
+#version 430 core
+
+precision mediump image2D;
+layout (local_size_x = 4, local_size_y = 16) in;
+layout (binding = 0, rgba32f) readonly uniform image2D input_image;
+layout (binding = 1, rgba32f) writeonly uniform image2D output_image;
+shared vec4 tmp[4*16];
+
+void main(void)
+{
+    ivec2 pos = ivec2(gl_GlobalInvocationID.xy);
+    tmp[gl_LocalInvocationIndex] = imageLoad(input_image, pos);
+    barrier();
+    imageStore(output_image, pos, vec4(1.0)-tmp[gl_LocalInvocationIndex]);
+}

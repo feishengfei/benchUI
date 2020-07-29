@@ -1,0 +1,25 @@
+#version 430 core
+
+layout(vertices = 4) out;
+
+in vec4 color[];
+
+out vec4 TCcolor[];
+
+void main()
+{
+	gl_TessLevelInner[0] = (gl_MaxComputeWorkGroupCount.x+1)/16384.0;
+	gl_TessLevelInner[1] = (gl_MaxComputeWorkGroupCount.y+1)/16384.0;
+
+	gl_TessLevelOuter[0] = (gl_MaxComputeWorkGroupCount.z+1)/16384.0;
+	gl_TessLevelOuter[1] = gl_MaxComputeWorkGroupSize.x/32.0;
+	gl_TessLevelOuter[2] = gl_MaxComputeWorkGroupSize.y/32.0;
+	gl_TessLevelOuter[3] = gl_MaxComputeWorkGroupSize.z/16.0;
+
+
+	gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;
+	TCcolor[gl_InvocationID] = color[gl_InvocationID];
+}
+
+
+

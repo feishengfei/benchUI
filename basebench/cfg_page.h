@@ -25,6 +25,8 @@ private slots:
 
     void on_cfgAPICheck_clicked();
 
+    void on_cfgLib_toolBtn_clicked();
+
 private:
     Ui::cfg_Page *ui;
     select_Page *selectPage;

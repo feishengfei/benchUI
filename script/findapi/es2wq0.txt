@@ -1,0 +1,17 @@
+glFinish:/home/bts/otto/btx_bench/samples/basic/api/es20/es11-frustumortho1.cpp
+glGetPointerv:/home/bts/otto/btx_bench/samples/basic/api/es20/es11-getpointerv.cpp
+glLogicOp:/home/bts/otto/btx_bench/samples/basic/api/es20/es11-logicop.cpp
+glPointParameterfv:/home/bts/otto/btx_bench/samples/basic/api/es20/es11-points.cpp
+glPointParameterf:/home/bts/otto/btx_bench/samples/basic/api/es20/es11-points.cpp
+glBlendFuncSeparate:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-blendfuncsep.cpp
+glColorMask:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-colormask.cpp
+glCompressedTexImage2D:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-compresstex.cpp
+glCopyTexSubImage2D:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-copytexsub1.cpp
+glDepthMask:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-depthmask.cpp
+glGetString:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-getstring.cpp
+glHint:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-hint.cpp
+glIsProgram:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-program.cpp
+glSampleCoverage:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-samplecoverage.cpp
+glDetachShader:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-shaderbinary.cpp
+glIsShader:/home/bts/otto/btx_bench/samples/basic/api/es20/es20-shaderbinary.cpp
+

@@ -1,0 +1,25 @@
+#version 430 core
+
+layout (triangles, equal_spacing, cw) in; 
+
+subroutine vec4 coordType(float a, vec4 b);
+subroutine uniform coordType coord;
+
+subroutine(coordType)
+vec4 omu(float a, vec4 position)
+{
+    return vec4(a * position);
+}
+
+subroutine(coordType)
+vec4 omv(float a, vec4 position)
+{
+    return vec4((1-a) * position);
+}
+
+void main()
+{
+    gl_Position = coord(gl_TessCoord.x, gl_in[0].gl_Position) +
+		  coord(gl_TessCoord.y, gl_in[1].gl_Position) +
+		  coord(gl_TessCoord.z, gl_in[2].gl_Position);
+}

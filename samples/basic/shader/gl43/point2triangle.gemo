@@ -1,0 +1,48 @@
+#version 430 core
+
+layout(points) in;
+layout(triangle_strip, max_vertices = 6) out;
+
+uniform vec4 mov1 = vec4(0.4, 0.0, 0.0, 0.0);
+uniform vec4 mov2 = vec4(0.0, 0.4, 0.0, 0.0);
+uniform vec4 mov3 = vec4(0.4, 0.4, 0.0, 0.0);
+uniform vec4 mov4 = vec4(0.8, 0.4, 0.0, 0.0);
+uniform vec4 mov5 = vec4(0.4, 0.8, 0.0, 0.0);
+
+in VS_OUT{
+    vec4 color;
+}gs_in[];
+
+out GS_OUT{
+    vec4 color;
+}gs_out;
+
+
+void main(){
+       gl_Position = gl_in[0].gl_Position;
+       gs_out.color = gs_in[0].color.rgga;
+       EmitVertex();
+
+       gl_Position = gl_in[0].gl_Position + mov1;
+       gs_out.color = gs_in[0].color.rrga;
+       EmitVertex();
+
+       gl_Position = gl_in[0].gl_Position + mov2;
+       gs_out.color = gs_in[0].color.bbba;
+       EmitVertex();
+       EndPrimitive();
+
+
+      gl_Position = gl_in[0].gl_Position + mov3;
+      gs_out.color = gs_in[0].color.rrga;
+      EmitVertex();
+
+      gl_Position = gl_in[0].gl_Position + mov4;
+      gs_out.color = gs_in[0].color.bbba;
+      EmitVertex();
+
+      gl_Position = gl_in[0].gl_Position + mov5;
+      gs_out.color = gs_in[0].color.rrga;
+      EmitVertex();
+      EndPrimitive();
+}

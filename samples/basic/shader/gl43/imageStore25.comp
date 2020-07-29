@@ -1,0 +1,10 @@
+#version 430 core
+
+precision mediump image2D;
+layout (local_size_x = 4, local_size_y = 16) in;
+
+layout (r8i) writeonly uniform iimage2D output_image;
+void main(void)
+{
+    imageStore(output_image, ivec2(gl_GlobalInvocationID.xy), ivec4(vec2(gl_LocalInvocationID.xy) / ivec2(gl_WorkGroupSize.xy), 0, 0));
+    }
