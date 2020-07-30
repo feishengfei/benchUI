@@ -15,6 +15,19 @@ class cfg_Page : public QWidget
 public:
     explicit cfg_Page(QWidget *parent = nullptr);
     ~cfg_Page();
+    //QStringList caselist;
+
+    //static QString libpath;
+    //static QString arch;
+    //static QString outformat;
+    //static QString winsys;
+    static QString apiversion;
+    static QString module;
+
+    //static bool en_gdb;
+    //static bool en_dump;
+
+    static QStringList runlist;
 
 private slots:
     void on_cfgExitBtn_clicked();
@@ -27,10 +40,15 @@ private slots:
 
     void on_cfgLib_toolBtn_clicked();
 
+    void on_cfgApiverBox_currentTextChanged(const QString &arg1);
+
+    void on_cfgModelBox_currentTextChanged(const QString &arg1);
+
 private:
     Ui::cfg_Page *ui;
-    select_Page *selectPage;
-
+   // QString version;
+    //QString module;
+    void updateCaselist();
 };
 
 #endif // CFG_PAGE_H

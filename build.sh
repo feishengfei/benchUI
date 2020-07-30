@@ -61,7 +61,7 @@ alternative_libpath_gb=$(find /home/$(whoami) -type d -print | grep -E '/gbumd/g
 umd_libpath_gb=${alternative_libpath_gb:-$(find /home/$(whoami) -type d -print | grep -E '/gbumd-x86_64-debug-v.*/lib64$')}
 libpath_gb=${umd_libpath_gb:-"/usr/local/botson/lib64"}
 #input parameters list
-build_target_list=("basic" "shader" "function" "model" "performance")
+build_target_list=("coverage" "shader" "function" "model" "performance")
 target_list="gb mesa"
 
 #Clean up the old build information

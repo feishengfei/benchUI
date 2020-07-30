@@ -20,63 +20,6 @@
       <number>5</number>
      </property>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,4,2">
-       <property name="spacing">
-        <number>5</number>
-       </property>
-       <item>
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>微软雅黑</family>
-           <pointsize>16</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>选择用例</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item>
       <widget class="Line" name="line">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -96,7 +39,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,10,2">
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,10,1">
        <item>
         <spacer name="horizontalSpacer">
          <property name="orientation">
@@ -111,34 +54,59 @@
         </spacer>
        </item>
        <item>
-        <widget class="QListWidget" name="listWidget">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>微软雅黑</family>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
+        <widget class="QTreeWidget" name="treeWidget">
+         <column>
+          <property name="text">
+           <string>按照用例名称选择</string>
+          </property>
+         </column>
          <item>
           <property name="text">
-           <string>gl20-basic</string>
+           <string>coverage</string>
           </property>
           <property name="checkState">
-           <enum>Checked</enum>
+           <enum>PartiallyChecked</enum>
           </property>
+          <item>
+           <property name="text">
+            <string>OGL2.0</string>
+           </property>
+           <property name="checkState">
+            <enum>Checked</enum>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>OGL2.1</string>
+           </property>
+           <property name="checkState">
+            <enum>Unchecked</enum>
+           </property>
+          </item>
          </item>
          <item>
           <property name="text">
-           <string>gl20-uniform</string>
+           <string>limit</string>
           </property>
           <property name="checkState">
            <enum>Checked</enum>
           </property>
+          <item>
+           <property name="text">
+            <string>OGL2.0</string>
+           </property>
+           <property name="checkState">
+            <enum>Checked</enum>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>OGL2.1</string>
+           </property>
+           <property name="checkState">
+            <enum>Checked</enum>
+           </property>
+          </item>
          </item>
         </widget>
        </item>

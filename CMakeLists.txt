@@ -31,18 +31,18 @@ else (ARCH)
     set(ARCH x86)
 endif (ARCH)
 
-# Type: basic / function / model / perform / shader / all
+# Type: coverage / function / model / perform / shader / all
 if (TYPE)
-    if ((${TYPE} STREQUAL "basic") OR (${TYPE} STREQUAL "function") OR (${TYPE} STREQUAL "shader")
+    if ((${TYPE} STREQUAL "coverage") OR (${TYPE} STREQUAL "function") OR (${TYPE} STREQUAL "shader")
       OR (${TYPE} STREQUAL "model") OR (${TYPE} STREQUAL "performance") OR (${TYPE} STREQUAL "simulate")
       OR (${TYPE} STREQUAL "all"))
         message("Build for Type: ${TYPE}")
     else ()
-        message("Type: ${TYPE} is not valid. Choices are \"basic\" and \"function\" and \"model\" and \"performance\" and \"simulate\" and \"all\"")
+        message("Type: ${TYPE} is not valid. Choices are \"coverage\" and \"function\" and \"model\" and \"performance\" and \"simulate\" and \"all\"")
     endif ()
 else (TYPE)
-    message("TYPE was not set, Now using \"basic\" as default")
-    set(TYPE "basic")
+    message("TYPE was not set, Now using \"coverage\" as default")
+    set(TYPE "coverage")
 endif (TYPE)
 
 #gdb: on / off

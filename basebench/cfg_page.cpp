@@ -8,20 +8,54 @@ cfg_Page::cfg_Page(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::cfg_Page)
 {
+    apiversion = QString("gl43");
+    module = QString("coverage");
+
     ui->setupUi(this);
-    ui->lineEdit->setText(libpath);
-    en_gdb ? ui->cfgGdbBox->setCheckState(Qt::Checked) : ui->cfgGdbBox->setCheckState(Qt::Unchecked);
-    en_dump ? ui->cfgDumpBox->setCheckState(Qt::Checked) : ui->cfgDumpBox->setCheckState(Qt::Unchecked);
-    ui->configArchBox->setCurrentText(arch);
-    ui->configOutformBox->setCurrentText(outformat);
+    ui->lineEdit->setText(GB_CFG::libpath);
+    GB_CFG::en_gdb ? ui->cfgGdbBox->setCheckState(Qt::Checked) : ui->cfgGdbBox->setCheckState(Qt::Unchecked);
+    GB_CFG::en_dump ? ui->cfgDumpBox->setCheckState(Qt::Checked) : ui->cfgDumpBox->setCheckState(Qt::Unchecked);
+    ui->configArchBox->setCurrentText(GB_CFG::arch);
+    ui->configOutformBox->setCurrentText(GB_CFG::outformat);
     ui->cfgApiverBox->setCurrentText(apiversion);
     ui->cfgModelBox->setCurrentText(module);
-    ui->cfgWinsysBox->setCurrentText(winsys);
+    ui->cfgWinsysBox->setCurrentText(GB_CFG::winsys);
+
+    updateCaselist();
 }
 
 cfg_Page::~cfg_Page()
 {
     delete ui;
+}
+
+void cfg_Page::updateCaselist()
+{
+    // 直接用version和module
+    QString dir = "D:\\project\\test\\basebench\\samples\\" + module;
+    QDir qd(dir);
+
+    runlist.clear();
+    //GB_CFG::runlist.append(runlist);
+
+    //加载目录下所有文件，可以添加过滤
+    QFileInfoList subfilelist = qd.entryInfoList(QDir::Files | QDir::CaseSensitive);
+
+    for (int i = 0;i < subfilelist.size(); i++)
+    {
+        QString suffix = subfilelist[i].suffix();
+        if (suffix.compare("cpp") == 0)
+        {
+            QString qs;
+            qs.append(qPrintable(subfilelist[i].baseName()));
+            qs.remove("\n");
+            if(qs.startsWith(apiversion,Qt::CaseSensitive)){
+                //GB_CFG::runlist.append(qs);
+                runlist << qs;
+            }
+        }
+    }
+    qDebug() << "size: " << runlist.size() << endl;
 }
 
 void cfg_Page::on_cfgExitBtn_clicked()
@@ -31,14 +65,15 @@ void cfg_Page::on_cfgExitBtn_clicked()
 
 void cfg_Page::on_cfgNextBtn_clicked()
 {
-    libpath = ui->lineEdit->text();
-    en_gdb = ui->cfgGdbBox->isChecked();  // ture / false
-    en_dump = ui->cfgDumpBox->isChecked();
-    arch = ui->configArchBox->currentText();
-    outformat = ui->configOutformBox->currentText();
-    winsys = ui->cfgWinsysBox->currentText();
+    GB_CFG::libpath = ui->lineEdit->text();
+    GB_CFG::en_gdb = ui->cfgGdbBox->isChecked();  // ture / false
+    GB_CFG::en_dump = ui->cfgDumpBox->isChecked();
+    GB_CFG::arch = ui->configArchBox->currentText();
+    GB_CFG::outformat = ui->configOutformBox->currentText();
+    GB_CFG::winsys = ui->cfgWinsysBox->currentText();
     apiversion = ui->cfgApiverBox->currentText();
     module = ui->cfgModelBox->currentText();
+
     cfmPage = new conform_Page;
     cfmPage->show();
     this->hide();
@@ -46,18 +81,14 @@ void cfg_Page::on_cfgNextBtn_clicked()
 
 void cfg_Page::on_cfgSelfCheck_clicked()
 {
-    if(ui->cfgSelfCheck->isChecked()) {
-        selectPage = new select_Page;
-        selectPage->show();
-    }
+    selectPage = new select_Page(QString("select testcase"));
+    selectPage->show();
 }
 
 void cfg_Page::on_cfgAPICheck_clicked()
 {
-    if(ui->cfgAPICheck->isChecked()) {
-        selectPage = new select_Page;
-        selectPage->show();
-    }
+    selectPage = new select_Page(QString("select API"));
+    selectPage->show();
 }
 
 void cfg_Page::on_cfgLib_toolBtn_clicked()
@@ -67,4 +98,16 @@ void cfg_Page::on_cfgLib_toolBtn_clicked()
     {
         ui->lineEdit->setText(directory);
     }
+}
+
+void cfg_Page::on_cfgApiverBox_currentTextChanged(const QString &arg1)
+{
+    apiversion = arg1;
+    updateCaselist();
+}
+
+void cfg_Page::on_cfgModelBox_currentTextChanged(const QString &arg1)
+{
+    module = arg1;
+    updateCaselist();
 }

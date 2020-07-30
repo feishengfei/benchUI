@@ -367,122 +367,117 @@
                </property>
                <item>
                 <property name="text">
-                 <string>All</string>
+                 <string>gl13</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL1.3</string>
+                 <string>gl14</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL1.4</string>
+                 <string>gl15</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL1.5</string>
+                 <string>gl20</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL2.0</string>
+                 <string>gl21</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL2.1</string>
+                 <string>gl22</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL2.2</string>
+                 <string>gl30</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL3.0</string>
+                 <string>gl31</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL3.1</string>
+                 <string>gl32</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL3.2</string>
+                 <string>gl33</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL3.3</string>
+                 <string>gl40</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL4.0</string>
+                 <string>gl41</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL4.1</string>
+                 <string>gl42</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL4.2</string>
+                 <string>gl43</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL4.3</string>
+                 <string>gl44</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL4.4</string>
+                 <string>gl45</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL4.5</string>
+                 <string>gl46</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>OGL4.6</string>
+                 <string>es11</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>GLES1.1</string>
+                 <string>es20</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>GLES2.0</string>
+                 <string>es30</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>GLES3.0</string>
+                 <string>es31</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>GLES3.1</string>
+                 <string>es32</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>GLES3.2</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>GLES3.3</string>
+                 <string>es33</string>
                 </property>
                </item>
               </widget>
@@ -504,11 +499,6 @@
                <property name="autoFillBackground">
                 <bool>true</bool>
                </property>
-               <item>
-                <property name="text">
-                 <string>All</string>
-                </property>
-               </item>
                <item>
                 <property name="text">
                  <string>coverage</string>
@@ -617,9 +607,9 @@
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="cfgSelfCheck">
+            <widget class="QPushButton" name="cfgSelfCheck">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -634,14 +624,14 @@
               <bool>true</bool>
              </property>
              <property name="text">
-              <string>是否自选用例</string>
+              <string>自选用例</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="cfgAPICheck">
+            <widget class="QPushButton" name="cfgAPICheck">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -656,7 +646,7 @@
               <bool>true</bool>
              </property>
              <property name="text">
-              <string>按照API选择</string>
+              <string>按API选择</string>
              </property>
             </widget>
            </item>
