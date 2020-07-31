@@ -26,6 +26,11 @@ static bool en_dump(false);
 }
 
 
+//typedef struct {
+//    QString name;
+//    Qt::CheckState state;
+//} caseInfo;
+
 struct cfg_info {
     QString libpath;
     QString arch;

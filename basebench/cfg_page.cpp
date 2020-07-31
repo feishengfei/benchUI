@@ -46,7 +46,7 @@ void cfg_Page::updateCaselist()
 
     for(auto iter = versionlist.begin(); iter != versionlist.end(); ++iter)
     {
-        runlist.insert(*iter, QStringList());
+        runlist.insert(*iter, QMap<QString, Qt::CheckState>());
         if(*iter == apiversion) break;
     }
     //加载目录下所有文件，可以添加过滤
@@ -62,7 +62,7 @@ void cfg_Page::updateCaselist()
             qs.remove("\n");
             QString prefix = qs.split("-")[0];
             if(runlist.contains(prefix)) {
-                runlist[prefix].append(qs);
+                runlist[prefix].insert(qs,Qt::Unchecked);
             }
 //            if(qs.startsWith(prefix,Qt::CaseSensitive)){
 //                //GB_CFG::runlist.append(qs);

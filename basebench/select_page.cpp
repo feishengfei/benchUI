@@ -6,7 +6,7 @@
 #include <QFile>
 #include <QMap>
 
-QMap<QString, QStringList> cfg_Page::runlist;
+QMap<QString,QMap<QString, Qt::CheckState>> cfg_Page::runlist;
 
 void select_Page::init()
 {
@@ -18,13 +18,13 @@ void select_Page::init()
         QTreeWidgetItem* group = new QTreeWidgetItem(ui->treeWidget);
         group->setText(0,iter.key());
         group->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-        group->setCheckState(0,Qt::Checked);
+        group->setCheckState(0,Qt::Unchecked);
         for (auto i = iter.value().begin(); i != iter.value().end(); ++i)
         {
             QTreeWidgetItem* subItem = new QTreeWidgetItem(group);
             subItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-            subItem->setText(0,*i);
-            subItem->setCheckState(0,Qt::Checked);
+            subItem->setText(0,i.key());
+            subItem->setCheckState(0,i.value());
         }
     }
 }
@@ -103,16 +103,16 @@ void select_Page::updateParentItem(QTreeWidgetItem* item)
     for(int i=0; i<childCount; i++)
     {
         QTreeWidgetItem* childItem = parent->child(i);
+        QString key = parent->text(0);
+        auto get = cfg_Page::runlist.find(key);
         if(childItem->checkState(0) == Qt::Checked)
         {
             selectedCount++;
+            get.value()[childItem->text(0)] = Qt::Checked;
         }
         else
         {
-            QString key = parent->text(0);
-            qDebug() << "select ==========  " << key << endl;
-            auto get = cfg_Page::runlist.find(key);
-            get.value().removeOne(childItem->text(0));
+            get.value()[childItem->text(0)] = Qt::Unchecked;
         }
     }
     if(selectedCount <= 0)  //如果没有子项被选中，父项设置为未选中状态

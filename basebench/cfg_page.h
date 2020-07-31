@@ -27,8 +27,7 @@ public:
     //static bool en_gdb;
     //static bool en_dump;
 
-    //static QStringList runlist;
-    static QMap<QString,QStringList> runlist;
+    static QMap<QString,QMap<QString, Qt::CheckState>> runlist;
 
 private slots:
     void on_cfgExitBtn_clicked();
@@ -47,8 +46,6 @@ private slots:
 
 private:
     Ui::cfg_Page *ui;
-   // QString version;
-    //QString module;
     void updateCaselist();
 };
 

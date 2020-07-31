@@ -54,61 +54,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QTreeWidget" name="treeWidget">
-         <column>
-          <property name="text">
-           <string>按照用例名称选择</string>
-          </property>
-         </column>
-         <item>
-          <property name="text">
-           <string>coverage</string>
-          </property>
-          <property name="checkState">
-           <enum>PartiallyChecked</enum>
-          </property>
-          <item>
-           <property name="text">
-            <string>OGL2.0</string>
-           </property>
-           <property name="checkState">
-            <enum>Checked</enum>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>OGL2.1</string>
-           </property>
-           <property name="checkState">
-            <enum>Unchecked</enum>
-           </property>
-          </item>
-         </item>
-         <item>
-          <property name="text">
-           <string>limit</string>
-          </property>
-          <property name="checkState">
-           <enum>Checked</enum>
-          </property>
-          <item>
-           <property name="text">
-            <string>OGL2.0</string>
-           </property>
-           <property name="checkState">
-            <enum>Checked</enum>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>OGL2.1</string>
-           </property>
-           <property name="checkState">
-            <enum>Checked</enum>
-           </property>
-          </item>
-         </item>
-        </widget>
+        <widget class="QTreeWidget" name="treeWidget"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_2">
