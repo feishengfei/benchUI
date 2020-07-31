@@ -4,27 +4,28 @@
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QMap>
 
-QStringList cfg_Page::runlist;
-QString cfg_Page::apiversion;
-QString cfg_Page::module;
+QMap<QString, QStringList> cfg_Page::runlist;
 
 void select_Page::init()
 {
     //add init item
     ui->treeWidget->clear();
 
-    QTreeWidgetItem* group = new QTreeWidgetItem(ui->treeWidget);
-    group->setText(0,cfg_Page::apiversion);
-    group->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-    group->setCheckState(0,Qt::Checked);
-
-    for (int i = 0;i < cfg_Page::runlist.size(); i++)
-    {
-        QTreeWidgetItem* subItem = new QTreeWidgetItem(group);
-        subItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-        subItem->setText(0,cfg_Page::runlist[i]);
-        subItem->setCheckState(0,Qt::Checked);
+    for(auto iter = cfg_Page::runlist.begin(); iter != cfg_Page::runlist.end(); ++iter) {
+        if(iter.value().isEmpty()) continue;
+        QTreeWidgetItem* group = new QTreeWidgetItem(ui->treeWidget);
+        group->setText(0,iter.key());
+        group->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+        group->setCheckState(0,Qt::Checked);
+        for (auto i = iter.value().begin(); i != iter.value().end(); ++i)
+        {
+            QTreeWidgetItem* subItem = new QTreeWidgetItem(group);
+            subItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+            subItem->setText(0,*i);
+            subItem->setCheckState(0,Qt::Checked);
+        }
     }
 }
 
@@ -108,7 +109,10 @@ void select_Page::updateParentItem(QTreeWidgetItem* item)
         }
         else
         {
-            cfg_Page::runlist.removeOne(childItem->text(0));
+            QString key = parent->text(0);
+            qDebug() << "select ==========  " << key << endl;
+            auto get = cfg_Page::runlist.find(key);
+            get.value().removeOne(childItem->text(0));
         }
     }
     if(selectedCount <= 0)  //如果没有子项被选中，父项设置为未选中状态

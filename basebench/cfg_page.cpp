@@ -38,6 +38,17 @@ void cfg_Page::updateCaselist()
     runlist.clear();
     //GB_CFG::runlist.append(runlist);
 
+    //QString s=ui->tableWidget->item(j,0)->text();//取出字符串
+    QString verstr("gl14,gl15,gl20,gl21,gl22,gl30,gl31,gl32,gl33,gl40,gl41,gl42,gl43,gl45,gl46");
+    QStringList versionlist = verstr.split(",");
+    QString modulestr("coverage,limit,function,storage,shader,error");
+    QStringList modulelist = verstr.split(",");
+
+    for(auto iter = versionlist.begin(); iter != versionlist.end(); ++iter)
+    {
+        runlist.insert(*iter, QStringList());
+        if(*iter == apiversion) break;
+    }
     //加载目录下所有文件，可以添加过滤
     QFileInfoList subfilelist = qd.entryInfoList(QDir::Files | QDir::CaseSensitive);
 
@@ -49,13 +60,16 @@ void cfg_Page::updateCaselist()
             QString qs;
             qs.append(qPrintable(subfilelist[i].baseName()));
             qs.remove("\n");
-            if(qs.startsWith(apiversion,Qt::CaseSensitive)){
-                //GB_CFG::runlist.append(qs);
-                runlist << qs;
+            QString prefix = qs.split("-")[0];
+            if(runlist.contains(prefix)) {
+                runlist[prefix].append(qs);
             }
+//            if(qs.startsWith(prefix,Qt::CaseSensitive)){
+//                //GB_CFG::runlist.append(qs);
+//                runlist << qs;
+//            }
         }
     }
-    qDebug() << "size: " << runlist.size() << endl;
 }
 
 void cfg_Page::on_cfgExitBtn_clicked()

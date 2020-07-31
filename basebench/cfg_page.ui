@@ -506,6 +506,11 @@
                </item>
                <item>
                 <property name="text">
+                 <string>storage</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
                  <string>function</string>
                 </property>
                </item>

@@ -21,13 +21,14 @@ public:
     //static QString arch;
     //static QString outformat;
     //static QString winsys;
-    static QString apiversion;
-    static QString module;
+    QString apiversion;
+    QString module;
 
     //static bool en_gdb;
     //static bool en_dump;
 
-    static QStringList runlist;
+    //static QStringList runlist;
+    static QMap<QString,QStringList> runlist;
 
 private slots:
     void on_cfgExitBtn_clicked();
